@@ -44,10 +44,10 @@ class BudgetApp:
     def calculate_balance(self) -> None:
         """Calculate and display the monthly balance after summing labeled expenses."""
         try:
-            income = float(self.income_entry.get().replace(',', '').strip())
-            total_expenses = sum(float(expense[1].get().replace(',', '').strip()) for expense in self.expenses if expense[1].get())
+            income = float(self.income_entry.get().replace('$', '').replace(',', '').strip())
+            total_expenses = sum(float(expense[1].get().replace('$', '').replace(',', '').strip()) for expense in self.expenses if expense[1].get())
 
             balance = income - total_expenses
             self.result_label.config(text=f'Balance: ${balance:,.2f}')
-        except ValueError as e:
-            self.result_label.config(text=f'Error: {str(e)}')
+        except ValueError:
+            self.result_label.config(text=f'Please enter only numbers.')

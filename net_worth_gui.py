@@ -38,9 +38,9 @@ class NetWorthApp:
     def calculate_net_worth(self) -> None:
         """Calculate and display net worth based on assets and liabilities."""
         try:
-            total_assets = sum(float(self.assets[asset].get().replace(',', '').strip()) for asset in self.assets)
-            liabilities = float(self.liabilities_entry.get().replace(',', '').strip())
+            total_assets = sum(float(self.assets[asset].get().replace('$', '').replace(',', '').strip()) for asset in self.assets)
+            liabilities = float(self.liabilities_entry.get().replace('$', '').replace(',', '').strip())
             net_worth = total_assets - liabilities
             self.result_label.config(text=f'Net Worth: ${net_worth:,.2f}')
-        except ValueError as e:
-            self.result_label.config(text=f'Error: {str(e)}')
+        except ValueError:
+            self.result_label.config(text=f'Please enter only numbers.')

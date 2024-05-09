@@ -31,11 +31,11 @@ class InterestCalculatorApp:
     def perform_calculation(self) -> None:
         """Calculate and display the compound interest based on user input."""
         try:
-            principal = float(self.principal_entry.get().replace(',', '').strip())
+            principal = float(self.principal_entry.get().replace('$', '').replace(',', '').strip())
             rate = float(self.rate_entry.get().strip()) / 100  # Convert percentage to decimal
             years = int(self.years_entry.get().strip())
             calculator = CompoundInterestCalculator()
             result = calculator.calculate(principal, rate, years)
             self.result_label.config(text=f'Result: ${result:,.2f}')
-        except ValueError as e:
-            self.result_label.config(text=f'Error: {str(e)}')
+        except ValueError:
+            self.result_label.config(text=f'Please enter only numbers.')
