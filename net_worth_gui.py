@@ -29,7 +29,7 @@ class NetWorthApp:
         self.result_label.pack()
 
     def create_asset_entry(self, label_text: str, asset_name: str) -> None:
-        """Helper function to create labeled entry for each asset."""
+        """Create labeled entry for each asset."""
         tk.Label(self.root, text=label_text).pack()
         entry = tk.Entry(self.root)
         entry.pack()
